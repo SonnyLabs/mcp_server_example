@@ -122,15 +122,14 @@ client.analyze_text("output string", scan_type="output", tag=tag)
 
 ## When to Use SonnyLabs
 
-SonnyLabs is designed for use during the development and testing phases of an AI application. Suggested use cases include:
+SonnyLabs is designed for use during the development, testing and runtime phases of an AI application. Suggested use cases include:
 
 - Pre-deployment security testing
 - Dedicated QA/testing environments
 - CI/CD pipelines for AI applications
 - Manual penetration testing
 - Auditing new LLM tools before launch
-
-**Note:** SonnyLabs is not intended for production inference filtering. It is designed to help identify prompt injection vulnerabilities in advance.
+- Auduting or blocking prompt injections during runtime
 
 ---
 
