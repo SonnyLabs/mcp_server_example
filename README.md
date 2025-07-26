@@ -171,6 +171,8 @@ In a separate terminal window, activate the virtual environment and run the clie
 ```bash
 # On macOS/Linux
 source venv/bin/activate
+# or
+venv\Scripts\activate  # On Windows
 ```
 
 ```bash
