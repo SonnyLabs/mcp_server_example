@@ -133,6 +133,48 @@ SonnyLabs is designed for use during the development, testing and runtime phases
 
 ---
 
+## Running the MCP Server Locally
+
+### 1. Setup a Python Virtual Environment
+
+```bash
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate  # On macOS/Linux
+# or
+venv\Scripts\activate  # On Windows
+
+# Create a requirements.txt file with the following content:
+# fastmcp
+# git+https://github.com/SonnyLabs/sonnylabs_py.git
+# python-dotenv
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 2. Running the Server
+
+```bash
+# From the project root directory
+python mcp/server.py
+```
+
+The server will start in the terminal and display information about the FastMCP and MCP versions.
+
+### 3. Testing with the Client
+
+In a separate terminal window, activate the virtual environment and run the client:
+
+```bash
+source venv/bin/activate  # On macOS/Linux
+python mcp/client.py
+```
+
+---
+
 ## Summary
 
 - MCP servers allow AI agents to securely call structured tools.
@@ -140,3 +182,4 @@ SonnyLabs is designed for use during the development, testing and runtime phases
 - SonnyLabs detects malicious instructions and prompt injection attempts.
 - The example `add` tool is intentionally vulnerable to demonstrate potential attack vectors.
 - SonnyLabs scans are linked across input/output and help identify vulnerabilities before deployment.
+- MCP servers can be integrated with various clients, including Claude Desktop.

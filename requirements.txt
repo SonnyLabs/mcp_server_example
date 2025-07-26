@@ -1,0 +1,3 @@
+fastmcp
+git+https://github.com/SonnyLabs/sonnylabs_py.git
+python-dotenv
