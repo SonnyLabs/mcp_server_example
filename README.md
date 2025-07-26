@@ -13,7 +13,7 @@ MCPs provide a framework for building LLM agents that can access functions like 
 ### 1. Install Dependencies
 
 ```bash
-pip install fastmcp sonnylabs_py
+pip install fastmcp git+https://github.com/SonnyLabs/sonnylabs_py
 ```
 
 ### 2. Create the MCP Server (`server.py`)
