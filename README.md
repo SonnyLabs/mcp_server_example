@@ -129,7 +129,7 @@ SonnyLabs is designed for use during the development, testing and runtime phases
 - CI/CD pipelines for AI applications
 - Manual penetration testing
 - Auditing new LLM tools before launch
-- Auduting or blocking prompt injections during runtime
+- Auditing or blocking prompt injections during runtime
 
 ---
 
@@ -138,10 +138,10 @@ SonnyLabs is designed for use during the development, testing and runtime phases
 ### 1. Setup a Python Virtual Environment
 
 ```bash
-# Create a virtual environment
+# (Optional) Create a virtual environment
 python -m venv venv
 
-# Activate the virtual environment
+# (Optional) Activate the virtual environment
 source venv/bin/activate  # On macOS/Linux
 # or
 venv\Scripts\activate  # On Windows
@@ -169,7 +169,11 @@ The server will start in the terminal and display information about the FastMCP 
 In a separate terminal window, activate the virtual environment and run the client:
 
 ```bash
-source venv/bin/activate  # On macOS/Linux
+# On macOS/Linux
+source venv/bin/activate
+```
+
+```bash
 python mcp/client.py
 ```
 
