@@ -1,5 +1,5 @@
 from fastmcp import FastMCP
-from sonnylabs_py import SonnyLabsClient
+from sonnylabs import SonnyLabsClient
 
 mcp = FastMCP("My MCP Server")
 

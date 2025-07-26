@@ -13,7 +13,7 @@ MCPs provide a framework for building LLM agents that can access functions like 
 ### 1. Install Dependencies
 
 ```bash
-pip install fastmcp git+https://github.com/SonnyLabs/sonnylabs_py python-dotenv
+pip install fastmcp sonnylabs python-dotenv
 ```
 
 ### 2. Create the MCP Server (`server.py`)
@@ -22,7 +22,7 @@ pip install fastmcp git+https://github.com/SonnyLabs/sonnylabs_py python-dotenv
 
 ```python
 from fastmcp import FastMCP
-from sonnylabs_py import SonnyLabsClient
+from sonnylabs import SonnyLabsClient
 
 mcp = FastMCP("My MCP Server")
 
@@ -149,7 +149,7 @@ All analysis results are available in the SonnyLabs dashboard or via email.
 ### Installation
 
 ```bash
-pip install git+https://github.com/SonnyLabs/sonnylabs_py
+pip install sonnylabs
 ```
 
 ### Prerequisites
@@ -162,7 +162,7 @@ pip install git+https://github.com/SonnyLabs/sonnylabs_py
 ### Initialization
 
 ```python
-from sonnylabs_py import SonnyLabsClient
+from sonnylabs import SonnyLabsClient
 
 client = SonnyLabsClient(
     api_key="YOUR_API_KEY",
@@ -178,7 +178,6 @@ input_result = client.analyze_text("input string", scan_type="input")
 tag = input_result["tag"]
 client.analyze_text("output string", scan_type="output", tag=tag)
 ```
-
 
 ### Direct API Call with cURL
 
@@ -213,7 +212,7 @@ SonnyLabs is designed for use during the development, testing and runtime phases
 ### 1. Install Dependencies
 
 ```bash
-pip install fastmcp git+https://github.com/SonnyLabs/sonnylabs_py python-dotenv
+pip install fastmcp sonnylabs python-dotenv
 ```
 
 ### 2. Set up Environment (Optional)
