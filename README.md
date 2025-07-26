@@ -13,10 +13,12 @@ MCPs provide a framework for building LLM agents that can access functions like 
 ### 1. Install Dependencies
 
 ```bash
-pip install fastmcp git+https://github.com/SonnyLabs/sonnylabs_py
+pip install fastmcp git+https://github.com/SonnyLabs/sonnylabs_py python-dotenv
 ```
 
 ### 2. Create the MCP Server (`server.py`)
+
+> **Note**: The server will work without SonnyLabs integration. If you don't have credentials or use placeholder values, the server will skip security analysis but still function normally.
 
 ```python
 from fastmcp import FastMCP
@@ -24,25 +26,12 @@ from sonnylabs_py import SonnyLabsClient
 
 mcp = FastMCP("My MCP Server")
 
-from dotenv import load_dotenv
-import os
-
-# Load environment variables from .env file in the same directory as server.py
-import pathlib
-env_path = pathlib.Path(__file__).parent / '.env'
-load_dotenv(env_path)
-
-# Debug: Print environment variables to check if they're loaded
-print(f"Debug - API Token: {'***' if os.getenv('SONNYLABS_API_TOKEN') else 'None'}")
-print(f"Debug - Analysis ID: {os.getenv('SONNYLABS_ANALYSIS_ID')}")
-print(f"Debug - Base URL: {os.getenv('SONNYLABS_BASE_URL')}")
-
-# Initialize SonnyLabs client with proper error handling
+# Initialize SonnyLabs client (optional - replace with your credentials)
 try:
     client = SonnyLabsClient(
-        api_token=os.getenv("SONNYLABS_API_TOKEN"),
-        analysis_id=os.getenv("SONNYLABS_ANALYSIS_ID"),
-        base_url=os.getenv("SONNYLABS_BASE_URL")
+        api_token="your-api-token-here",
+        analysis_id="your-analysis-id",
+        base_url="https://sonnylabs-service.onrender.com"
     )
     print("SonnyLabs client initialized successfully")
 except Exception as e:
@@ -207,49 +196,38 @@ SonnyLabs is designed for use during the development, testing and runtime phases
 
 ## Running the MCP Server Locally
 
-### 1. Setup a Python Virtual Environment
+### 1. Install Dependencies
 
 ```bash
-# (Optional) Create a virtual environment
-python -m venv venv
-
-# (Optional) Activate the virtual environment
-source venv/bin/activate  # On macOS/Linux
-# or
-venv\Scripts\activate  # On Windows
-
-# Create a requirements.txt file with the following content:
-# fastmcp
-# git+https://github.com/SonnyLabs/sonnylabs_py.git
-# python-dotenv
-
-# Install dependencies
-pip install -r requirements.txt
+pip install fastmcp git+https://github.com/SonnyLabs/sonnylabs_py python-dotenv
 ```
 
-### 2. Running the Server
+### 2. Set up Environment (Optional)
+
+Create a `.env` file in the `mcp/` folder with your SonnyLabs credentials:
 
 ```bash
-# From the project root directory
+# Copy the example file
+copy mcp\.env.example mcp\.env
+```
+
+Then edit `mcp/.env` with your actual values.
+
+### 3. Run the Server
+
+```bash
 python mcp/server.py
 ```
 
-The server will start in the terminal and display information about the FastMCP and MCP versions.
+### 4. Test with the Client
 
-### 3. Testing with the Client
-
-In a separate terminal window, activate the virtual environment and run the client:
-
-```bash
-# On macOS/Linux
-source venv/bin/activate
-# or
-venv\Scripts\activate  # On Windows
-```
+In a new terminal window:
 
 ```bash
 python mcp/client.py
 ```
+
+The client will send a malicious prompt injection attempt to test the server's security detection.
 
 ---
 
